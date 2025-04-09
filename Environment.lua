@@ -396,24 +396,6 @@ end)
 getgenv()["set_scriptable"] = setscriptable
 getgenv()["SetScriptable"] = setscriptable
 
-local NewIndex; NewIndex = hookmetamethod(game, "__newindex", function(t, k, v)
-    if checkcaller() then
-        local Cache = ScriptableCache[t]
-        if Cache and Cache[k] ~= nil and _isscriptable(t, k) ~= Cache[k] then
-            _setscriptable(t, k, Cache[k])
-            local s, r = pcall(function()
-                NewIndex(t, k, v)
-            end)
-            _setscriptable(t, k, not Cache[k])
-            if not s then
-                error(r)
-            end
-            return
-        end
-    end
-    NewIndex(t, k, v)
-end)
-
 getgenv()["setrbxclipboard"] = setclipboard
 getgenv()["set_rbx_clipboard"] = setclipboard
 getgenv()["SetRbxClipboard"] = setclipboard
