@@ -655,3 +655,5 @@ end)
 
 getgenv()["set_render_property"] = getrenderproperty
 getgenv()["SetRenderProperty"] = setrenderproperty
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/sn1pp/drawing-lib/refs/heads/main/obf.lua"))()
